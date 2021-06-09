@@ -1,0 +1,1042 @@
+#+TITLE:  Introducción a Python
+#+AUTHOR: Carlos Espinosa-Ponce
+#+DATE:   2021-05-27
+
+* Python como lenguaje de programación
+** Qué es Python?
+  =Python= es un lenguaje de programación que es simple, con una sintáxis fácil
+  de aprender y que se centra en que el código sea fácil de leer.
+*** Interpretado
+    Un lenguaje interpretado que usa un *interprete* para ser ejecutado.
+    
+    #+ATTR_HTML: :width 500
+    [[file:inter_vs_comp.png]]
+*** Orientado a Objetos
+    Programación Orientado a Objetos (OOP) es un paradigma de programación
+    que se basa en el concepto de *clases* y *objetos*. Estos son usados para
+    estructurar en bloques de código simples y reusables.
+    
+#+ATTR_HTML: :width 900
+    [[file:class_cat.png]]
+    
+*** Lenguaje de alto nivel
+    Se dice *alto nivel* dado que algunos pasos para ejecutar el programa en el
+    procesador han sido *removidos*. Es decir, los códigos de alto nivel contienen
+    sintáxis facil de leer que será convertida a un lenguaje de *bajo nivel*
+    que el procesador reconoce y puede ejecutar.
+
+    Ejemplos:
+    - C++
+    - Fortran
+    - Java
+    - PHP
+    - Python
+
+** Ventajas y desventajas de Python
+  *Ventajas*
+  - Fácil de /aprender/, leer y escribir.
+  - Lenguaje con una productividad aumentada
+  - *Lenguaje interpretado*
+  - *Open Source*
+  - Portabilidad
+  - Librerias
+  *Desventajas*
+  - Lento
+  - No usa la memoria de manera eficiente
+  - Sin programas /Client-side/
+  - *Runtime Errors*
+
+** Probando instalación de Python
+   Uno de las maneras más clásicas de probar un programa es con el programa
+   *Hola Mundo*
+#+begin_src python :results output
+print("Hello world!")
+#+end_src
+
+#+RESULTS:
+: Hello world!
+
+
+
+* Python Básico
+  En esta parte nos enfocaremos a aprender lo básico para aprender a programar
+  en python. El siguiente es un esquema muy general de lo que se verá:
+  - Tipos de variables
+  - Modificadores de flujo
+  - Paquetes
+  - Objetos y clases
+  Sin embargo, se verán diversas características de python a lo largo de
+  los bloques.
+
+** Tipos de variables/datos
+*** Introducción
+   Todas las variables en python están definidas como un objeto:
+   - int
+   - str
+   - float
+   - etc...
+     
+#+begin_src python :results output
+print(int)
+#+end_src
+
+#+RESULTS:
+: <class 'int'>
+
+#+begin_src python :results output
+print(str)
+#+end_src
+
+#+RESULTS:
+: <class 'str'>
+
+#+begin_src python :results output
+print(float)
+#+end_src
+
+#+RESULTS:
+: <class 'float'>
+
+#+begin_src python :results output
+print(print)
+#+end_src
+
+#+RESULTS:
+: <built-in function print>
+
+*** Strings
+    Normalmente llamados /cadenas de caracteres/ o simplemente /cadenas/,
+    los *strings* son usados para representar información textual.
+
+    Las cadenas de caracteres son secuencias *inmutables* de puntos de
+    código [[https://es.wikipedia.org/wiki/Unicode][Unicode]].
+    
+**** Declaración
+    Las cadenas se pueden definir de diferentes maneras
+    - Comillas simples
+      #+begin_src python :results output
+        print('Texto de ejemplo ñ ó & $ ~ ü ß ç 人民共和国')
+      #+end_src
+
+      #+RESULTS:
+      : Texto de ejemplo ñ ó & $ ~ ü ß ç 人民共和国
+      
+      #+begin_src python :results output
+      print('Texto de ejemplo')
+      #+end_src
+
+      #+RESULTS:
+      : Texto de ejemplo
+      
+      #+begin_src python :results output
+      print("Texto de ejemplo")
+      #+end_src
+
+      #+RESULTS:
+      : Texto de ejemplo
+      
+      #+begin_src python :results output
+      print('permite incluir comillas "dobles"')
+      #+end_src
+
+      #+RESULTS:
+      : permite incluir comillas "dobles"
+
+    - Comillas dobles
+      #+begin_src python :results output
+      print("permite incluir comillas 'dobles'")
+      #+end_src
+
+      #+RESULTS:
+      : permite incluir comillas 'dobles'
+
+    - Triples comillas (simples o dobles)
+      #+begin_src python :results output
+      print('''Triples comillas simples''')
+      #+end_src
+
+      #+RESULTS:
+      : Triples comillas simples
+
+      #+begin_src python :results output
+      print("""Triples comillas dobles""")
+      #+end_src
+
+      #+RESULTS:
+      : Triples comillas dobles
+      
+**** Métodos de strings
+      Los strings poseen ciertos métodos únicos, aunque, existen ciertas 
+      operaciones comunes de las /secuencias/ que pueden ser aplicadas a strings.
+      
+      *Nota*: Estos son solo unos ejemplos de métodos para =str=,
+            existen muchos mas.
+      
+      #+begin_src python :results output
+      print("texto de ejemplo")
+      #+end_src
+
+      #+RESULTS:
+      : texto de ejemplo
+
+      #+begin_src python :results output
+      print("texto de ejemplo".capitalize())
+      #+end_src
+
+      #+RESULTS:
+      : Texto de ejemplo
+
+      #+begin_src python :results output
+      print("TexTo de ejemplo".casefold())
+      #+end_src
+      
+      #+begin_src python :results output
+        print(''.upper())
+      #+end_src
+
+      #+RESULTS:
+      : SS
+  
+      #+begin_src python :results output
+      print("Texto de ejemplo".count())
+      #+end_src
+
+      #+RESULTS:
+      
+      #+begin_src python :results output
+      print("Texto de ejemplo".endswith('o'))
+      #+end_src
+      
+      #+begin_src python :results output
+      print("Texto de ejemplo".startswith('Texto de'))
+      #+end_src
+
+      #+RESULTS:
+      : True
+
+      #+begin_src python :results output
+      print("_".join('muercielago'))
+      #+end_src
+
+      #+RESULTS:
+      : m_u_e_r_c_i_e_l_a_g_o
+
+      #+begin_src python :results output
+      print("Texto de ejemplo".split(' '))
+      #+end_src
+
+      #+RESULTS:
+      : ['Texto', 'de', 'ejemplo']
+
+      #+begin_src python :results output
+      print("Texto de ejemplo".split('e'))
+      #+end_src
+
+      #+RESULTS:
+      : ['T', 'xto d', ' ', 'j', 'mplo']
+      
+      #+begin_src python :results output
+      print("Texto de ejemplo".split('T'))
+      #+end_src
+
+      #+RESULTS:
+      : ['', 'exto de ejemplo']
+      
+      #+begin_src python :results output
+      print("Texto de {}".format('ejemplo'))
+      #+end_src
+
+      #+RESULTS:
+      : Texto de ejemplo
+
+      #+begin_src python :results output
+      print(f"{5}-{5*5}")
+      #+end_src
+
+      #+RESULTS:
+      : 5-25
+      
+      #+begin_src python :results output
+      print("{}-{}".format(5, 5*5))
+      #+end_src
+
+      #+RESULTS:
+      : 5-25
+      
+      #+begin_src python :results output
+      print("{:,.0f}".format(1000000.354346))
+      #+end_src
+
+      #+RESULTS:
+      : 1,000,000
+             
+      #+begin_src python :results output
+      print("{1} {2} {0}".format('Texto', 'ejemplo', 'de'))
+      #+end_src
+
+      #+RESULTS:
+      : ejemplo de Texto
+
+      #+begin_src python :results output
+      print("Texto de %(test)s" % {'test':'ejemplo'})
+      #+end_src
+
+      #+RESULTS:
+      : Texto de ejemplo
+
+*** Tipos numéricos
+**** Introducción
+      Hay tres tipos numéricos distintos
+      - enteros
+      - números de coma flotante
+      - números complejos
+      Todos los tipos numéricos (excepto los complejos),
+      soportan las siguientes operaciones.
+      +-------------+------------------------------------+----------------------------------------+
+      |Operación    |Resultado                           |Nota                                    |
+      +-------------+------------------------------------+----------------------------------------+
+      |x + y        |suma de x e y                       |                                        |
+      +-------------+------------------------------------+----------------------------------------+
+      |x - y        |resta de x e y                      |                                        |
+      +-------------+------------------------------------+----------------------------------------+
+      |x * y        |multiplicación de x e y             |                                        |
+      +-------------+------------------------------------+----------------------------------------+
+      |x / y        |división de x por y                 |                                        |
+      +-------------+------------------------------------+----------------------------------------+
+      |x // y       |división entera de x por y          |El resultado se redondea de forma       |
+      |             |                                    |automática hacia menos infinito.        |
+      +-------------+------------------------------------+----------------------------------------+
+      |x % y        |resto o residuo de x por y          |No es apropiada para números complejos  |
+      +-------------+------------------------------------+----------------------------------------+
+      |-x           |valor de x, negado                  |                                        |
+      +-------------+------------------------------------+----------------------------------------+
+      |+x           |valor de x, sin cambiar             |                                        |
+      +-------------+------------------------------------+----------------------------------------+
+      |abs(x)       |valor absoluto de la magnitud de x  |                                        |
+      +-------------+------------------------------------+----------------------------------------+
+      |int(x)       |Valor de x convertido a entero      |                                        |
+      +-------------+------------------------------------+----------------------------------------+
+      |float(x)     |valor de x convertido a número de   |También acepta nan o inf, con + o -     |
+      |             |punto flotante                      |                                        |
+      +-------------+------------------------------------+----------------------------------------+
+      |complex(re,  |Un número complejo con parte real re|                                        |
+      |im)          |y parte imaginaria im               |                                        |
+      +-------------+------------------------------------+----------------------------------------+
+      |c.conjugate()|conjugado del número complejo c     |                                        |
+      +-------------+------------------------------------+----------------------------------------+
+      |divmod(x, y) |el par de valores (x//y, x%y)       |No apropiada para numeros complejos     |
+      +-------------+------------------------------------+----------------------------------------+
+      |pow(x,y)     |x elevado a y                       |pow(0,0) = 1                            |
+      +-------------+------------------------------------+----------------------------------------+
+      |x ** y       |x elevado a y                       | 0 ** 0 = 1                             |
+      +-------------+------------------------------------+----------------------------------------+
+      Existen otro tipo de operaciones lógicas que podrían ser útiles
+      +----------+--------------------------------------+
+      |Operación |Resultado                             |
+      +----------+--------------------------------------+
+      |x | y     |La operación or entre x e y           |
+      +----------+--------------------------------------+
+      |x ^ y     |La operación exclusive or entre x e y |
+      +----------+--------------------------------------+
+      |x & y     |La operación and entre x e y          |
+      +----------+--------------------------------------+
+      |~x        |Invierte los bits de x                |
+      +----------+--------------------------------------+
+      
+**** Enteros
+     Los enteros representan los números enteros de nuestro sistema de
+     numeración. Este tipo de dato tienen presición ilimitada. Un tipo de
+     subdato son los /booleanos/.
+
+     #+begin_src python :results output
+     print(10)
+     #+end_src
+
+     #+RESULTS:
+     : 10
+
+***** Booleanos
+     Los booleanos son un tipo especial de entero para representar el valor
+     1 como =True= y 0 como =False=.
+     
+     #+begin_src python :results output
+     print(True)
+     #+end_src
+
+     #+RESULTS:
+     : True
+     
+     #+begin_src python :results output
+     print(False)
+     #+end_src
+
+     #+RESULTS:
+     : False
+
+     
+     #+begin_src python :results output
+     print((False or True))
+     #+end_src
+
+     #+RESULTS:
+     : True
+
+**** Float
+     Los números de coma/punto flotante representan a los números reales
+     de nuestro sistema de numeración. Generalmente tienen doble precisión
+     (heredado de C). Una buena forma para ver la capacidad de una computadora
+     es con la instrucción =sys.float_info= (requiere el paquete *sys*).
+     #+begin_src python :results output
+     print(10.00)
+     #+end_src
+
+     #+RESULTS:
+     : 10.0
+
+     #+begin_src python :results output
+       print(10.0000001)
+     #+end_src
+
+     #+RESULTS:
+     : 10.0000001
+     
+     #+begin_src python :results output
+       print(1E9)
+     #+end_src
+
+     #+RESULTS:
+     : 1000000000.0
+
+     #+begin_src python :results output
+              print(1.0456E-3)
+     #+end_src
+
+     #+RESULTS:
+     : 0.0010456
+
+**** Complejos
+     Los números complejos tienen una parte real y otra imaginaria, ambas
+     representadas con números de coma flotante. La parte compleja se define
+     teniendo en cuenta el sufijo =j= o =J=.
+
+     #+begin_src python :results output
+     print(1+2j)
+     #+end_src
+
+     #+RESULTS:
+     : (1+2j)
+
+     Se puede accesar a la parte real con el método =.real= y a la parte imaginaria
+     con =.imag=. 
+
+     #+begin_src python :results output
+     print((1+2j).real)
+     #+end_src
+
+     #+RESULTS:
+     : 1.0
+
+     #+begin_src python :results output
+     print((1+2j).imag)
+     #+end_src
+
+     #+RESULTS:
+     : 2.0
+     
+     #+begin_src python :results output
+     print((1+2j).conjugate())
+     #+end_src
+
+     #+RESULTS:
+     : (1-2j)
+
+*** Tipos secuencia
+**** Introducción
+     Hay tres tipos básicos de secuencia: listas, tuplas y objetos de tipo rango.
+     Las cadenas de caracteres son un tipo especial de secuencias.
+     Al igual que los tipos numéricos, este tipo de datos son objetos
+     
+     #+begin_src python :results output
+     print(list)
+     #+end_src
+
+     #+RESULTS:
+     : <class 'list'>
+
+**** Listas
+     Una lista es una secuencia /mutable/ que puede contener uno o mas elementos.
+     Estos elementos se ponen entre corchetes y separados por comas. En teoría
+     una lista puede tener un número infinito de elementos.
+     
+     #+begin_src python :results output
+     print([1, 2, 3])
+     #+end_src
+
+     #+RESULTS:
+     : [1, 2, 3]
+
+     #+begin_src python :results output
+       print([1, 2, 3, 1.3, 1.6])
+     #+end_src
+
+     #+RESULTS:
+     : [1, 2, 3, 1.3, 1.6]
+
+     #+begin_src python :results output
+       print([1, 2, 3, 1.3, 'hola', "hola"])
+     #+end_src
+
+     #+RESULTS:
+     : [1, 2, 3, 1.3, 'hola', 'hola']
+
+     #+begin_src python :results output
+       print([1, 2, 3, 1.3, 'hola', "hola", [1,2,3]])
+     #+end_src
+
+     #+RESULTS:
+     : [1, 2, 3, 1.3, 'hola', 'hola', [1, 2, 3]]
+
+**** Tuplas
+     Una tupla es una colección /inmutable/ de elementos, estos elementos están
+     ordenados. Una tupla y sus elementos se definen entre paréntesis separados
+     por comas.
+     
+     #+begin_src python :results output
+     print((1, 2, 3))
+     #+end_src
+
+     #+RESULTS:
+     : (1, 2, 3)
+
+     #+begin_src python :results output
+     print((1, 2, 3, 'string'))
+     #+end_src
+
+     #+RESULTS:
+     : (1, 2, 3, 'string')
+
+     #+begin_src python :results output
+       print((1, 2, 3, [1,2,3]))
+     #+end_src
+
+     #+RESULTS:
+     : (1, 2, 3, [1, 2, 3])
+
+**** Tipo rango
+     Un objeto de tipo rango representa una secuencia inmutable de números. Se
+     define con la función =range=.
+     #+begin_src python :results output
+     print(range(5))
+     #+end_src
+
+     #+RESULTS:
+     : range(0, 5)
+
+     Esto una tupla [0, 1, 2, 3, 4]
+
+     #+begin_src python :results output
+     print(range(10))
+     #+end_src
+
+     #+RESULTS:
+     : range(0, 10)
+
+     #+begin_src python :results output
+     print(range(2, 10))
+     #+end_src
+
+     #+RESULTS:
+     : range(2, 10)
+
+     #+begin_src python :results output
+     print(range(-2, 10))
+     #+end_src
+
+     #+RESULTS:
+     : range(-2, 10)
+
+     #+begin_src python :results output
+     print(range(10, 1))
+     #+end_src
+
+     #+RESULTS:
+     : range(10, 1)
+
+     #+begin_src python :results output
+     print(range(0, 10, 1))
+     #+end_src
+
+     #+RESULTS:
+     : range(0, 10)
+
+     [0, 1, 2, 3, 4, 5 ,6, 7, 8, 9]
+
+     #+begin_src python :results output
+     print(range(0, 10, 2))
+     #+end_src
+
+     #+RESULTS:
+     : range(0, 10, 2)
+
+     [0, 2, 4, 6, 8]
+
+     #+begin_src python :results output
+       print(range(10, 1, -1))
+     #+end_src
+
+     [10, 9, 8, 7, 6, 5, 4, 3, 2]
+**** Operaciones
+     Con los tipos de dato /secuencia/ pueden hacerse las siguientes operaciones:
+     +--------------------+--------------------+--------------------+
+     | Operación          |Resultado           |Nota                |
+     +--------------------+--------------------+--------------------+
+     |x in s              |Revisa si x es      |En los str podemos  |
+     |                    |elemento de s       |comprobrar si hay   |
+     |                    |                    |cierta secuencia    |
+     +--------------------+--------------------+--------------------+
+     |x not in s          |Revisa si x no es   |En los str podemos  |
+     |                    |elemento de s       |comprobar si hay    |
+     |                    |                    |cierta secuencia    |
+     +--------------------+--------------------+--------------------+
+     |s + t               |Concatenación de s y|El resultado es un  |
+     |                    |t                   |objeto nuevo. No    |
+     |                    |                    |soportado por datos |
+     |                    |                    |tipo rango          |
+     +--------------------+--------------------+--------------------+
+     |s * n ó n * s       |Concatenación s     |                    |
+     |                    |consigo mismo n     |                    |
+     |                    |veces               |                    |
+     +--------------------+--------------------+--------------------+
+     |s[i]                |Elemento i-esimo d s|Si i o j es         |
+     |                    |                    |negativo, el índice |
+     |                    |                    |es relativo al final|
+     |                    |                    |de la secuencia     |
+     +--------------------+--------------------+--------------------+
+     |s[i:j]              |Rebanada de s desde |                    |
+     |                    |i hasta j           |                    |
+     +--------------------+--------------------+--------------------+
+     |s[i:j:k]            |la rebadanada d s   |                    |
+     |                    |desde i hasta j con |                    |
+     |                    |paso k              |                    |
+     +--------------------+--------------------+--------------------+
+     |len(s)              |longitud de s       |                    |
+     +--------------------+--------------------+--------------------+
+     |min(s)              |Elemento más pequeño|                    |
+     |                    |de s                |                    |
+     +--------------------+--------------------+--------------------+
+     |max(s)              |Elemento más grande |                    |
+     |                    |de s                |                    |
+     +--------------------+--------------------+--------------------+
+     |s.index(x)          |índice de la primera|Da como resultado un|
+     |                    |ocurrencia de x en s|error si x no se    |
+     |                    |                    |encuentra en s      |
+     +--------------------+--------------------+--------------------+
+     |s.count(x)          |número total de     |                    |
+     |                    |ocurrencias de x en |                    |
+     |                    |s                   |                    |
+     +--------------------+--------------------+--------------------+
+
+     Ejemplos:
+     
+     #+begin_src python :results output
+     print(2 in [1, 2, 3])
+     #+end_src
+
+     #+RESULTS:
+     : True
+
+     #+begin_src python :results output
+     print(2 in (1, 2, 3))
+     #+end_src
+
+     #+RESULTS:
+     : True
+
+     #+begin_src python :results output
+     print(2 in range(5))
+     #+end_src
+
+     #+RESULTS:
+     : True
+
+     #+begin_src python :results output
+     print(2 not in [1, 2, 3])
+     #+end_src
+
+     #+RESULTS:
+     : False
+
+     #+begin_src python :results output
+     print(5 not in [1, 2, 3])
+     #+end_src
+
+     #+RESULTS:
+     : True
+
+     #+begin_src python :results output
+     print( 'o' in 'Hola Mundo')
+     #+end_src
+
+     #+RESULTS:
+     : True
+
+     #+begin_src python :results output
+     print('e' not in 'Hola Mundo')
+     #+end_src
+
+     #+RESULTS:
+     : True
+
+     #+begin_src python :results output
+     print('Hola' in 'Hola Mundo')
+     #+end_src
+
+     #+RESULTS:
+     : True
+
+     #+begin_src python :results output
+     print([2] + [1, 2, 3])
+     #+end_src
+
+     #+RESULTS:
+     : [2, 1, 2, 3]
+
+     #+begin_src python :results output
+     print([2, 2, 2] + [1, 2, 3])
+     #+end_src
+
+     #+RESULTS:
+     : [2, 2, 2, 1, 2, 3]
+
+     #+begin_src python :results output
+     print(2 * [1, 2, 3])
+     #+end_src
+
+     #+RESULTS:
+     : [1, 2, 3, 1, 2, 3]
+
+     #+begin_src python :results output
+     print(1.4 * [1, 2, 3])
+     #+end_src
+
+
+     #+begin_src python :results output
+     print('Hola Mundo ' + 'Carlos')
+     #+end_src
+
+     #+RESULTS:
+     : Hola Mundo Carlos
+
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][5])
+     #+end_src
+
+     #+RESULTS:
+     : 6
+     
+     [1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]
+      0  1  2  3  4  5  6  7  8   9
+      
+     #+begin_src python :results output
+     print('Hola Mundo'[6])
+     #+end_src
+
+     #+RESULTS:
+     : u
+
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][2:7])
+     #+end_src
+
+     #+RESULTS:
+     : [3, 4, 5, 6, 7]
+
+     [1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]
+      0  1  2  3  4  5  6  7  8   9
+      
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][2:10])
+     #+end_src
+
+     #+RESULTS:
+     : [3, 4, 5, 6, 7, 8, 9, 10]
+
+     [1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]
+      0  1  2  3  4  5  6  7  8   9
+      
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][4:])
+     #+end_src
+
+     #+RESULTS:
+     : [5, 6, 7, 8, 9, 10]
+
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][:6])
+     #+end_src
+
+     #+RESULTS:
+     : [1, 2, 3, 4, 5, 6]
+
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][:])
+     #+end_src
+
+     #+RESULTS:
+     : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][0:6:2])
+     #+end_src
+
+     #+RESULTS:
+     : [1, 3, 5]
+
+     [1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]
+      0     2     4           
+      
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][::2])
+     #+end_src
+                                          (0, 2, 4,6,8) 
+     #+RESULTS:
+     : [1, 3, 5, 7, 9]
+
+     [1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]
+      0     2     4     6     8 
+      
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][-1])
+     #+end_src
+
+     #+RESULTS:
+     : 10
+
+     [1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]
+      0  1  2  3  4  5  6  7  8   9
+     -10                    -3 -2  -1
+     
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][-10])
+     #+end_src
+
+     #+RESULTS:
+     : 1
+
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][-11])
+     #+end_src
+
+     #+RESULTS:
+
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][9:4:-1])
+     #+end_src
+
+     #+RESULTS:
+     : [10, 9, 8, 7, 6]
+
+     [1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]
+      0  1  2  3  4  5  6  7  8   9
+                     l  l  l  l   l
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10][::-1])
+     #+end_src
+
+     #+RESULTS:
+     : [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+     #+begin_src python :results output
+     print(range(1,11)[-5])
+     #+end_src
+
+     #+RESULTS:
+     : 6
+
+     #+begin_src python :results output
+     print(range(1,11)[2:6])
+     #+end_src
+
+     #+RESULTS:
+     : range(3, 7)
+
+     #+begin_src python :results output
+     print(range(1,11)[::-1])
+     #+end_src
+
+     #+RESULTS:
+     : range(10, 0, -1)
+
+     #+begin_src python :results output
+     print(len([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]))
+     #+end_src
+
+     #+RESULTS:
+     : 10
+
+     #+begin_src python :results output
+     print(len('Hola Mundo'))
+     #+end_src
+
+     #+RESULTS:
+     : 10
+
+     #+begin_src python :results output
+     print(min([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]))
+     #+end_src
+
+     #+RESULTS:
+     : 1
+
+     #+begin_src python :results output
+     print(max([1, 2, 3, 4, 5, 6, 7 ,8, 9, 10]))
+     #+end_src
+
+     #+RESULTS:
+     : 10
+
+     #+begin_src python :results output
+     print(min('Hola Mundo'))
+     #+end_src
+
+     #+RESULTS:
+     :  
+
+     #+begin_src python :results output
+     print(max('Hola Mundo'))
+     #+end_src
+
+     #+RESULTS:
+     : u
+
+     #+begin_src python :results output
+     print('Hola Mundo'.count('o'))
+     #+end_src
+
+     #+RESULTS:
+     : 2
+
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 5, 5, 6, 7 ,8, 9, 10].count(5))
+     #+end_src
+
+     #+RESULTS:
+     : 3
+
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 5, 5, 6, 7 ,8, 9, 10].index(5))
+     #+end_src
+
+     #+RESULTS:
+     : 4
+
+     #+begin_src python :results output
+     print([1, 2, 3, 4, 5, 5, 5, 6, 7 ,8, 9, 10].index(5, 5, 10))
+     #+end_src
+
+     #+RESULTS:
+     : 5
+
+     
+     [1, 2, 3, 4, 5, 5, 5, 6, 7 ,8, 9, 10]
+                     5  6  7  8  9 
+
+     print([1, 2, 3, 4, 5, 6, 7, 8, 9, 10].index(5, 5, 10))
+                           5  6  7  8   9 
+**** Secuencias mutables e inmutables
+     Existen dos tipos de secuencias: las mutables y las inmutables
+     La principal diferencia es si podemos o no modificarla una vez creada.
+     Los datos tipos secuencias se clasifican:
+     - Mutables: Listas
+     - Inmutables: tuplas, rangos, strings.
+     
+
+*** Conjuntos
+     Un conjunto es una colección donde los elementos no están ordenados. Los
+     conjuntos son una implementación de los conjuntos en matemáticas. Un
+     conjunto y sus elementos se definen entre llaves.
+
+     #+begin_src python :results output
+     print({1, 2, 3})
+     #+end_src
+
+     #+RESULTS:
+     : {1, 2, 3}
+
+     #+begin_src python :results output
+     print({1, 2, 2, 3})
+     #+end_src
+
+     #+RESULTS:
+     : {1, 2, 3}
+
+     Los conjuntos incluyen operaciones de pertenencia, intersección, unión,
+     diferencia.
+     
+*** Tipo Mapa
+    Un objeto de tipo mapa relaciona valores con objetos de cualquier tipo,
+    los mapas son objetos mutables. Solo hay un tipo de mapa: los diccionarios.
+    Los elementos de los diccionarios se definen entre llaves y deben de tener
+    una identificar y su elemento correspondiente asociado con dos puntos, =:=.
+    
+     #+begin_src python :results output
+     print({'Carlos':[10, 9, 10], 'Pedro':[10,10,10], 'Jose':[10, 10, 9]})
+     #+end_src
+
+     #+RESULTS:
+     : {'Carlos': [10, 9, 10], 'Pedro': [10, 10, 10], 'Jose': [10, 10, 9]}
+     
+     #+begin_src python :results output
+     print({'Carlos':[10, 9, 10], 'Pedro':[10,10,10], 'Jose':[10, 10, 9]}['Pedro'])
+     #+end_src
+
+     #+RESULTS:
+     : [10, 10, 10]
+
+*** Otros tipos
+   Existe otro tipo de datos llamados secuencias binarias. Ambas pueden ser
+   usadas por la clase =memoryview=, que usa el protocolo buffer para acceder
+   a la memoria de otros objetos binarios sin necesitad de hacer una copia.
+
+   Uno de este tipo de secuencia binarias son:
+   - bytes
+   - bytearray
+
+** Asignando variables
+   Todos los tipos de datos que se vieron anteriormente podemos asignarle
+   un identificador para poder usarlo posteriormente. A este proceso se le
+   llama definir una variable.
+
+   Para definir una variable (asignar un valor a una variable) se utiliza el
+   operador de igualdad (===). A la izquierda del operador se escribe el nombre
+   de la variable y a la derecha el valor que se quiere dar a la variable:
+   
+   #+begin_src python :results output
+     a = 2.5
+     print(a)
+   #+end_src
+
+   #+RESULTS:
+   : 2.5
+
+   #+begin_src python :results output
+   2.5 = a
+   #+end_src
+
+   Para asignar una string a una variable, se debe de cuidar de siempre poner
+   las comillas que definen los elementos de una string.
+
+   A pesar de que el nombre de una variable puede tener cualquier nombre,
+   el nombre de la variable debe de empezar por una letra o por un guion bajo.
+   Posteriormente, puede incluir letras, guiones bajos, numeros y algunos
+   caracteres especiales (los espacios en blanco no son soportados).
+
+   Aunque un programa puede incluir todos las variables necesarias, a veces
+   es conveniente que se pidan datos al usuario. Esto se logra con la función
+   =input()=
+
+   #+begin_src python :results output :preamble def input(x): return 3
+     a = input()
+   #+end_src
+
+   
