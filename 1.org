@@ -293,58 +293,32 @@ print(print)
       Todos los tipos numéricos (excepto los complejos),
       soportan las siguientes operaciones.
       
-      +-------------+------------------------------------+----------------------------------------+
-      |Operación    |Resultado                           |Nota                                    |
-      +-------------+------------------------------------+----------------------------------------+
-      |x + y        |suma de x e y                       |                                        |
-      +-------------+------------------------------------+----------------------------------------+
-      |x - y        |resta de x e y                      |                                        |
-      +-------------+------------------------------------+----------------------------------------+
-      |x * y        |multiplicación de x e y             |                                        |
-      +-------------+------------------------------------+----------------------------------------+
-      |x / y        |división de x por y                 |                                        |
-      +-------------+------------------------------------+----------------------------------------+
-      |x // y       |división entera de x por y          |El resultado se redondea de forma       |
-      |             |                                    |automática hacia menos infinito.        |
-      +-------------+------------------------------------+----------------------------------------+
-      |x % y        |resto o residuo de x por y          |No es apropiada para números complejos  |
-      +-------------+------------------------------------+----------------------------------------+
-      |-x           |valor de x, negado                  |                                        |
-      +-------------+------------------------------------+----------------------------------------+
-      |+x           |valor de x, sin cambiar             |                                        |
-      +-------------+------------------------------------+----------------------------------------+
-      |abs(x)       |valor absoluto de la magnitud de x  |                                        |
-      +-------------+------------------------------------+----------------------------------------+
-      |int(x)       |Valor de x convertido a entero      |                                        |
-      +-------------+------------------------------------+----------------------------------------+
-      |float(x)     |valor de x convertido a número de   |También acepta nan o inf, con + o -     |
-      |             |punto flotante                      |                                        |
-      +-------------+------------------------------------+----------------------------------------+
-      |complex(re,  |Un número complejo con parte real re|                                        |
-      |im)          |y parte imaginaria im               |                                        |
-      +-------------+------------------------------------+----------------------------------------+
-      |c.conjugate()|conjugado del número complejo c     |                                        |
-      +-------------+------------------------------------+----------------------------------------+
-      |divmod(x, y) |el par de valores (x//y, x%y)       |No apropiada para numeros complejos     |
-      +-------------+------------------------------------+----------------------------------------+
-      |pow(x,y)     |x elevado a y                       |pow(0,0) = 1                            |
-      +-------------+------------------------------------+----------------------------------------+
-      |x ** y       |x elevado a y                       | 0 ** 0 = 1                             |
-      +-------------+------------------------------------+----------------------------------------+
+      | Operación      | Resultado                                                  | Nota                                                               |
+      |----------------+------------------------------------------------------------+--------------------------------------------------------------------|
+      | x + y          | suma de x e y                                              |                                                                    |
+      | x - y          | resta de x e y                                             |                                                                    |
+      | x * y          | multiplicación de x e y                                    |                                                                    |
+      | x / y          | división de x por y                                        |                                                                    |
+      | x // y         | división entera de x por y                                 | El resultado se redondea de forma automática hacia menos infinito. |
+      | x % y          | resto o residuo de x por y                                 | No es apropiada para números complejos                             |
+      | +x             | valor de x, sin cambiar                                    |                                                                    |
+      | abs(x)         | valor absoluto de la magnitud de x                         |                                                                    |
+      | int(x)         | Valor de x convertido a entero                             |                                                                    |
+      | float(x)       | valor de x convertido a número de punto flotante           | También acepta nan o inf, con + o -                                |
+      | complex(re,im) | Un número complejo con parte real re y parte imaginaria im |                                                                    |
+      | c.conjugate()  | conjugado del número complejo c                            |                                                                    |
+      | divmod(x, y)   | el par de valores (x//y, x%y)                              | No apropiada para numeros complejos                                |
+      | pow(x,y)       | x elevado a y                                              | pow(0,0) = 1                                                       |
+      | x ** y         | x elevado a y                                              | 0 ** 0 = 1                                                         |
       
       Existen otro tipo de operaciones lógicas que podrían ser útiles
       
-      +----------+--------------------------------------+
       |Operación |Resultado                             |
-      +----------+--------------------------------------+
+      |----------+--------------------------------------|
       |x | y     |La operación or entre x e y           |
-      +----------+--------------------------------------+
       |x ^ y     |La operación exclusive or entre x e y |
-      +----------+--------------------------------------+
       |x & y     |La operación and entre x e y          |
-      +----------+--------------------------------------+
       |~x        |Invierte los bits de x                |
-      +----------+--------------------------------------+
       
 **** Enteros
      Los enteros representan los números enteros de nuestro sistema de
@@ -590,54 +564,21 @@ print(print)
      [10, 9, 8, 7, 6, 5, 4, 3, 2]
 **** Operaciones
      Con los tipos de dato /secuencia/ pueden hacerse las siguientes operaciones:
-     +--------------------+--------------------+--------------------+
-     | Operación          |Resultado           |Nota                |
-     +--------------------+--------------------+--------------------+
-     |x in s              |Revisa si x es      |En los str podemos  |
-     |                    |elemento de s       |comprobrar si hay   |
-     |                    |                    |cierta secuencia    |
-     +--------------------+--------------------+--------------------+
-     |x not in s          |Revisa si x no es   |En los str podemos  |
-     |                    |elemento de s       |comprobar si hay    |
-     |                    |                    |cierta secuencia    |
-     +--------------------+--------------------+--------------------+
-     |s + t               |Concatenación de s y|El resultado es un  |
-     |                    |t                   |objeto nuevo. No    |
-     |                    |                    |soportado por datos |
-     |                    |                    |tipo rango          |
-     +--------------------+--------------------+--------------------+
-     |s * n ó n * s       |Concatenación s     |                    |
-     |                    |consigo mismo n     |                    |
-     |                    |veces               |                    |
-     +--------------------+--------------------+--------------------+
-     |s[i]                |Elemento i-esimo d s|Si i o j es         |
-     |                    |                    |negativo, el índice |
-     |                    |                    |es relativo al final|
-     |                    |                    |de la secuencia     |
-     +--------------------+--------------------+--------------------+
-     |s[i:j]              |Rebanada de s desde |                    |
-     |                    |i hasta j           |                    |
-     +--------------------+--------------------+--------------------+
-     |s[i:j:k]            |la rebadanada d s   |                    |
-     |                    |desde i hasta j con |                    |
-     |                    |paso k              |                    |
-     +--------------------+--------------------+--------------------+
-     |len(s)              |longitud de s       |                    |
-     +--------------------+--------------------+--------------------+
-     |min(s)              |Elemento más pequeño|                    |
-     |                    |de s                |                    |
-     +--------------------+--------------------+--------------------+
-     |max(s)              |Elemento más grande |                    |
-     |                    |de s                |                    |
-     +--------------------+--------------------+--------------------+
-     |s.index(x)          |índice de la primera|Da como resultado un|
-     |                    |ocurrencia de x en s|error si x no se    |
-     |                    |                    |encuentra en s      |
-     +--------------------+--------------------+--------------------+
-     |s.count(x)          |número total de     |                    |
-     |                    |ocurrencias de x en |                    |
-     |                    |s                   |                    |
-     +--------------------+--------------------+--------------------+
+     
+     | Operación     | Resultado                                     | Nota                                                                 |
+     |---------------+-----------------------------------------------+----------------------------------------------------------------------|
+     | x in s        | Revisa si x es elemento de s                  | En los str podemos comprobar si hay cierta secuencia                 |
+     | x not in s    | Revisa si x no es elemento de s               | En los str podemos comprobar si hay cierta secuencia                 |
+     | s + t         | Concatenación de s y t                        | El resultado es un objeto nuevo. No soportado por datos tipo rango   |
+     | s * n ó n * s | Concatenación s consigo mismo n veces         |                                                                      |
+     | s[i]          | Elemento i-esimo d s                          | Si i o j es negativo, el índice es relativo al final de la secuencia |
+     | s[i:j]        | Rebanada de s desde i hasta j                 |                                                                      |
+     | s[i:j:k]      | La rebadanada de s desde i hasta j con paso k |                                                                      |
+     | len(s)        | longitud de s                                 |                                                                      |
+     | min(s)        | Elemento más pequeño de s                     |                                                                      |
+     | max(s)        | Elemento más grande de s                      |                                                                      |
+     | s.index(x)    | Índice de la primera ocurrencia de x en s     | Da como resultado un error si x no se encuentra en s                 |
+     | s.count(x)    | Número total de ocurrencias de x en s         |                                                                      |
 
      Ejemplos:
      
