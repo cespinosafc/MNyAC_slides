@@ -313,12 +313,12 @@ print(print)
       
       Existen otro tipo de operaciones lógicas que podrían ser útiles
       
-      |Operación |Resultado                             |
-      |----------+--------------------------------------|
-      |x | y     |La operación or entre x e y           |
-      |x ^ y     |La operación exclusive or entre x e y |
-      |x & y     |La operación and entre x e y          |
-      |~x        |Invierte los bits de x                |
+      | Operación | Resultado                             |
+      |-----------+---------------------------------------|
+      | x \vert y     | La operación or entre x e y           |
+      | x ^ y     | La operación exclusive or entre x e y |
+      | x & y     | La operación and entre x e y          |
+      | ~x        | Invierte los bits de x                |
       
 **** Enteros
      Los enteros representan los números enteros de nuestro sistema de
