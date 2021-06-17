@@ -49,7 +49,7 @@
 ** Probando instalación de Python
    Uno de las maneras más clásicas de probar un programa es con el programa
    *Hola Mundo*
-#+begin_src python :results output :export both
+#+begin_src python :results output :exports both
 print("Hello world!")
 #+end_src
 
