@@ -1,0 +1,552 @@
+#+TITLE:  Introducción a Python
+#+AUTHOR: Carlos Espinosa-Ponce
+#+DATE:   2021-06-03
+
+* Modificadores de flujo
+** Introducción
+  Un programa se puede ver como una secuencia de pasos para realizar una tarea.
+  Desde este punto de vista, un programa ser lineal:
+
+  #+BEGIN_SRC python :results output :exports both
+    a = 5
+    b = 6
+    print(a+b)
+  #+END_SRC
+
+  #+RESULTS:
+  : 11
+
+  Pero a veces es conveniente que cambiemos el flujo de un programa dependiendo
+  el problema a los que nos enfrentamos.
+  Hay distintos modificadores de flujo entre los cuales se encuentran:
+  - if
+  - for
+  - while
+** Estructuras de control de flujo condicionales
+  Las estructuras de control condicionales, son aquellas que nos permiten
+  evaluar si una o más condiciones se cumplen, para decir qué acción vamos a
+  ejecutar. La evaluación de condiciones, solo puede arrojar 1 de 2
+  resultados: verdadero o falso (True o False).
+  El mejor representante de esta estructura es =if=.
+
+*** Ejemplo
+    Hacer un programa que compare dos números, a y b. Por propiedad de tricotomia
+    sabemos que a > b, a < b o b = a.
+
+    #+BEGIN_SRC python :results output :exports both
+      a = 3
+      b = 3
+      if (a == b):
+          print("Los numeros a={} y b={} son iguales".format(a, b))
+      if (a > b): 
+          print("El numero a={} es mayor que b={}".format(a, b))
+      if (b > a): 
+          print("El numero b={} es mayor que a={}".format(b, a))
+      print('Fin del programa')
+    #+END_SRC
+    
+    #+RESULTS:
+    : Los numeros a=3 y b=3 son iguales
+    : Fin del programa
+    
+    #+BEGIN_SRC python :results output :exports both
+      a = 1
+      b = 3
+      if (a == b):
+          print("Los numeros a={} y b={} son iguales".format(a, b))
+      else:
+          print("Los numeros no son iguales")
+      print('Fin del programa')
+    #+END_SRC
+
+    #+RESULTS:
+    : Los numeros no son iguales
+    : Fin del programa
+
+    #+BEGIN_SRC python :results output :exports both
+      a = 1
+      b = 3
+      if (a == b):
+          print("Los numeros a={} y b={} son iguales".format(a, b))
+      else:
+          if (a > b): 
+              print("El numero a={} es mayor que b={}".format(a, b))
+          if (b > a): 
+              print("El numero b={} es mayor que a={}".format(b, a))
+      print('Fin del programa')
+    #+END_SRC
+
+    #+begin_src plantuml :file my-diagram.png
+      start
+          if (Condición) then (yes)
+          :comando1;
+          else (no)
+          :comando1;
+          endif
+      stop
+    #+end_src
+
+    #+RESULTS:
+    [[file:my-diagram.png]]
+
+** Estructura de control de flujos iterativas
+  A diferencia de las estructuras de control condicionales,
+  las iterativas (también llamadas cíclicas o bucles), nos permiten ejecutar
+  un mismo código, de manera repetida, mientras se cumpla una condición.
+  En python existen dos estructuras cíclicas:
+  - while
+  - for
+*** While
+   Este bucle, se encarga de ejecutar una misma acción "mientras que" una
+   determinada condición se cumpla.
+   
+    #+begin_src plantuml :file my-diagram2.png
+      start
+          :inicio;
+          :comandos iniciales;
+          while (condición) is (verdad)
+          :comandos 1;
+          :comandos 2;
+          :comandos n;
+          endwhile (falso)
+          :mas comandos;
+      stop
+    #+end_src
+
+    #+RESULTS:
+    [[file:my-diagram2.png]]
+
+**** Ejemplos
+    #+begin_src python :results output :exports both
+      i = 0
+      while i < 5:
+          print(i)
+          i = i + 1
+    #+end_src
+
+    #+RESULTS:
+    : 0
+    : 1
+    : 2
+    : 3
+    : 4
+
+*** For
+   El bucle for, en Python, es aquel que nos permitirá iterar sobre una
+   variable del tipo secuencia, por ejemplo, una lista o una tupla.
+
+    #+begin_src plantuml :file my-diagram3.png
+      start
+          :inicio;
+          :comandos iniciales;
+          while (Se ha llegado al ultimo elemento?) is (Falso)
+          :comandos 1;
+          :comandos 2;
+          :comandos n;
+          endwhile (Verdadero)
+          :mas comandos;
+      stop
+      stop
+    #+end_src
+
+    #+RESULTS:
+    [[file:my-diagram3.png]]
+    
+**** Ejemplo
+    #+begin_src python :results output :exports both
+      nums = [10, 20, 30, 40]
+      for num in nums:
+          print(num)
+    #+end_src
+
+    #+RESULTS:
+    : 10
+    : 20
+    : 30
+    : 40
+    
+    #+begin_src python :results output :exports both
+      for num in range(6):
+          print(num)
+    #+end_src
+
+    #+RESULTS:
+    : 0
+    : 1
+    : 2
+    : 3
+    : 4
+    : 5
+
+    #+begin_src python :results output :exports both
+      dict = {1:100, 2:200, 3:300}
+      for elem in dict:
+          print(elem)
+    #+end_src
+
+    #+RESULTS:
+    : 1
+    : 2
+    : 3
+    
+    #+begin_src python :results output :exports both
+      dict = {1:100, 2:200, 3:300}
+      for elem in dict.keys():
+          print(elem)
+    #+end_src
+
+    #+RESULTS:
+    : 1
+    : 2
+    : 3
+    
+    #+begin_src python :results output :exports both
+      dict = {1:100, 2:200, 3:300}
+      for par in dict.items():
+          print(par)
+    #+end_src
+
+    #+RESULTS:
+    : (1, 100)
+    : (2, 200)
+    : (3, 300)
+    
+    #+begin_src python :results output :exports both
+      dict = {1:100, 2:200, 3:300}
+      for k, v in dict.items():
+          print(f"key={k}    value={v}" )
+    #+end_src
+
+    #+RESULTS:
+    : key=1    value=100
+    : key=2    value=200
+    : key=3    value=300
+
+*** break y continue
+    En algunas ocasiones uno requiere que, dependiendo de cierta condición, el
+    bucle se rompa o que no ejecute alguna instrucción. Para esto se tiene el
+    comando =break= y el comando =continue=.
+
+**** break
+     =break= es usado para salir de un ciclo
+
+***** Ejemplo
+     
+    #+begin_src python :results output :exports both
+      nums = [10, 20, 30, 40]
+      i = 0
+      while i < len(nums):
+          print('---------')
+          print(i, nums[i])
+          i = i + 1
+    #+end_src
+
+    #+RESULTS:
+    : ---------
+    : 0 10
+    : ---------
+    : 1 20
+    : ---------
+    : 2 30
+    : ---------
+    : 3 40
+    
+    #+begin_src python :results output :exports both
+      nums = [10, 20, 30, 40]
+      i = 0
+      while i < len(nums):
+          print('---------')
+          if i == 2:
+              break
+          print(i, nums[i])
+          i = i + 1
+    #+end_src
+
+    #+RESULTS:
+    : ---------
+    : 0 10
+    : ---------
+    : 1 20
+    : ---------
+**** continue
+     =continue= es usado para saltar el los comando del bloque. Existe otra
+     comando en python llamado =pass= el cual es usaod para crear una clase,
+     método o bloque vacío.
+
+***** Ejemplo
+    #+begin_src python :results output :exports both
+      nums = [10, 20, 30, 40]
+      for i in range(len(nums)):
+          print('---------')
+          print(i, nums[i])
+    #+end_src
+
+    #+RESULTS:
+    : ---------
+    : 0 10
+    : ---------
+    : 1 20
+    : ---------
+    : 2 30
+    : ---------
+    : 3 40
+    
+    #+begin_src python :results output :exports both
+      nums = [10, 20, 30, 40]
+      for i in range(len(nums)):
+          print('---------')
+          if i == 2:
+             continue
+          print(i, nums[i])
+    #+end_src
+
+    #+RESULTS:
+    : ---------
+    : 0 10
+    : ---------
+    : 1 20
+    : ---------
+    : ---------
+    : 3 40
+
+
+    #+begin_src python :results output :exports both
+      nums = [10, 20, 30, 40]
+      for i in range(len(nums)):
+          print('---------')
+          if i == 2:
+              pass
+          print(i, nums[i])
+    #+end_src
+
+    #+RESULTS:
+    : ---------
+    : 0 10
+    : ---------
+    : 1 20
+    : ---------
+    : 2 30
+    : ---------
+    : 3 40
+
+* Cosas útiles sobre condicionales y ciclos
+
+    #+begin_src python :results output :exports both
+      lim1 = 0
+      lim2 = 5
+      a = 4
+      if (a>lim1) & (a<lim2):
+          print(f"a es mayor que {lim1} y menor que {lim2}")
+      else:
+          print(f"a esta fuera los limites")
+    #+end_src
+
+    #+RESULTS:
+    : a es mayor que 0 y menor que 5
+
+    #+begin_src python :results output :exports both
+      lim = 5
+      a = 4
+      if not (a > lim):
+          print(f"a no es mayor que {lim}")
+      else:
+          print(f"a es mayor que {lim}")
+    #+end_src
+
+    #+RESULTS:
+    : a no es mayor que 5
+
+    #+begin_src python :results output :exports both
+      a = 'Prueba'
+      if 'u' in a:
+          print(f"u esta en {a}")
+      else:
+          print(f"u no esta en {a}")
+    #+end_src
+
+    #+RESULTS:
+    : u esta en Prueba
+    
+    #+begin_src python :results output :exports both
+      i = 0
+      nums = range(200, 210)
+      while i < len(nums):
+          print(i, nums[i])
+          i = i + 1
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    0 200
+    1 201
+    2 202
+    3 203
+    4 204
+    5 205
+    6 206
+    7 207
+    8 208
+    9 209
+    #+end_example
+
+    #+begin_src python :results output :exports both
+      i = 0
+      nums = range(200, 210)
+      for num in nums:
+          print(i, num)
+          i = i + 1 
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    0 200
+    1 201
+    2 202
+    3 203
+    4 204
+    5 205
+    6 206
+    7 207
+    8 208
+    9 209
+    #+end_example
+
+    #+begin_src python :results output :exports both
+      nums = range(200, 210)
+      for i, num in enumerate(nums):
+          print(i, num)
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    0 200
+    1 201
+    2 202
+    3 203
+    4 204
+    5 205
+    6 206
+    7 207
+    8 208
+    9 209
+    #+end_example
+
+    #+begin_src python :results output :exports both
+      nums1 = range(200, 210)
+      nums2 = range(10)
+      nums3 = range(500, 510)
+      for i, num1, num2 in zip(nums2, nums1, nums3):
+          print(i, num1, num2)
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    0 200 500
+    1 201 501
+    2 202 502
+    3 203 503
+    4 204 504
+    5 205 505
+    6 206 506
+    7 207 507
+    8 208 508
+    9 209 509
+    #+end_example
+    
+* List Comprehension
+ Para entender este concepto, veamos unos ejemplo:
+    #+begin_src python :results output :exports both
+      letras = []
+      for letra in 'Hola mundo':
+          letras.append(letra)
+      print(letras)
+    #+end_src
+
+    #+RESULTS:
+    : ['H', 'o', 'l', 'a', ' ', 'm', 'u', 'n', 'd', 'o']
+
+    #+begin_src python :results output :exports both
+      letras = [letra for letra in 'Hola mundo']
+      print(letras)
+    #+end_src
+
+    #+RESULTS:
+    : ['H', 'o', 'l', 'a', ' ', 'm', 'u', 'n', 'd', 'o']
+
+    Podemos agregar un condicional:
+    
+    #+begin_src python :results output :exports both
+      numeros = []
+      for x in range(20):
+          if x % 2 == 0:
+              numeros.append(x)
+      print(numeros)
+    #+end_src
+
+    #+RESULTS:
+    : [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+    
+    #+begin_src python :results output :exports both
+      numeros = [x for x in range(20) if x % 2 == 0]
+      print(numeros)
+    #+end_src
+
+    #+RESULTS:
+    : [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+    O dos condicionales
+    
+    #+begin_src python :results output :exports both
+      numeros = []
+      for y in range(100):
+          if y % 2 == 0:
+              if y % 5 == 0:
+                  numeros.append(y)
+      print(numeros)
+    #+end_src
+
+    #+RESULTS:
+    : [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
+
+    #+begin_src python :results output :exports both
+      numeros = [y for y in range(100) if y % 2 == 0 if y % 5 == 0]
+      print(numeros)
+    #+end_src
+
+    #+RESULTS:
+    : [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
+
+    #+begin_src python :results output :exports both
+      obj = ["Par" if i%2==0 else "Impar" for i in range(10)]
+      print(obj)
+    #+end_src
+
+    #+RESULTS:
+    : ['Par', 'Impar', 'Par', 'Impar', 'Par', 'Impar', 'Par', 'Impar', 'Par', 'Impar']
+
+    E incluso un doble for
+    
+    #+begin_src python :results output :exports both
+      transpuesta = []
+      matriz = [[1, 2, 3, 4], [4, 5, 6, 8]]
+      
+      for i in range(len(matriz[0])):
+          transpuesta_fila = []
+          for fila in matriz:
+              transpuesta_fila.append(fila[i])
+          transpuesta.append(transpuesta_fila)
+      
+      print(transpuesta)
+    #+end_src
+
+    #+RESULTS:
+    : [[1, 4], [2, 5], [3, 6], [4, 8]]
+    
+    #+begin_src python :results output :exports both
+      matriz = [[1, 2], [3,4], [5,6], [7,8]]
+      transpuesta = [[fila[i] for fila in matriz] for i in range(2)]
+      print (transpuesta)
+    #+end_src
+
+    #+RESULTS:
+    : [[1, 3, 5, 7], [2, 4, 6, 8]]

@@ -1,0 +1,33 @@
+#+TITLE:  Introducción a Python
+#+AUTHOR: Carlos Espinosa-Ponce
+#+DATE:   2021-06-10
+
+* Funciones en Python
+  Las funciones en Python, y en cualquier lenguaje de programación, constituyen
+  una parte importante en la estructura de un programa.
+
+  Una =función= es un bloque de código que realiza una tarea específica
+  (o varias tareas). Las funciones son muy parecidas a las funciones en
+  matemáticas, tienen un nombre (o identificador) y puede recibir (o no)
+  algunos argumentos.
+
+  Una función se define como
+  #+begin_src python :results output
+    def nombre(arg1, arg2):
+        comandos
+        .
+        .
+        return valor
+  #+end_src
+  
+** Ejemplo
+  #+begin_src python :results output :exports both
+    def suma(num1, num2):
+        resultado = num1 + num2
+        return resultado
+    
+    print(suma(1, 2))
+  #+end_src
+
+  #+RESULTS:
+  : 3

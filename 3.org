@@ -1,0 +1,218 @@
+#+TITLE:  Introducción a Python
+#+AUTHOR: Carlos Espinosa-Ponce
+#+DATE:   2021-06-10
+
+* Trabajando con archivos
+  El soporte para leer y escribir archivos esta soportado por defecto en
+  python. Con python puro podemos crear, escribir y leer /todo/ tipo de archivos.
+
+** Como abrir un archivo
+   En Python solo basta usar la función =open=. El esta función da como resultado
+   un objeto del tipo *archivo* que incluye varios métodos y atributos que nos
+   permitirán realizar diversar acciones con el archivo.
+
+*** Ejemplo
+    #+begin_src python :results output
+      archivo = open("path_archivo", "modo")
+    #+end_src
+    Donde:
+    - =path_archivo= es la ruta en el sistema de archivos de la computadora
+      donde se encuentra el archivo
+    - =mode= es como se abrirá el archivo.
+
+      | Modo | Descripción                                                   |
+      |------+---------------------------------------------------------------|
+      | r    | Modo lectura (inicio del archivo)                             |
+      | r+   | Abre un archivo para lectura y escritura (inicio del archivo) |
+      | w    | Modo escritura (inicio del archivo)                           |
+      | w+   | Modo escritura y lectura                                      |
+      | a    | Modo para añadir datos (fin del archivo)                      |
+      | a+   | Modo para añadir datos y lectura (fin del archivo)            |
+      
+      También existe un modo binario que no será visto en este curso.
+
+** Crear un archivo
+   Si un archivo no existe, podemos crearlo usando el modo =w+=.
+   
+    #+begin_src python :results output
+      archivo = open("test.txt", "w+")
+    #+end_src
+
+    Note que si no existe el archivo, el modo escritura craerá
+    automáticamente el archivo.
+
+    Si queremos escribir datos en este archivo, podemos hacerlo con el método
+    del archivo =write=
+    
+    #+begin_src python :results output
+      for i in range(10):
+          f.write(f"Nueva linea {i}") 
+    #+end_src
+
+    No se nos debe de olvidar cerrar el archivo al terminar el programa con
+    el método =close=
+    
+    #+begin_src python :results output
+      f.close()
+    #+end_src
+    
+    Ejemplo completo
+    
+    #+begin_src python :results output :exports both
+      archivo = open("test.txt", "w+")
+      for i in range(10):
+          archivo.write(f"Nueva linea {i}\n") 
+      archivo.close()
+    #+end_src
+
+    #+RESULTS:
+
+** Agregar datos a un archivo
+   Para agregar datos tenemos que abrir el archivo en modo =a+=
+   
+    #+begin_src python :results output
+      f = open("test.txt", "a+")
+    #+end_src
+
+    Con esto podemos usar el método =write= para agregar datos
+
+    #+begin_src python :results output
+      for i in range(100, 110):
+          f.write(f"Linea agregada {i}\n") 
+    #+end_src
+    
+    Ejemplo completo
+    
+    #+begin_src python :results output :exports both
+      archivo = open("test.txt", "a+")
+      for i in range(100, 110):
+          archivo.write(f"Linea agregada {i}\n") 
+      archivo.close()
+    #+end_src
+
+    #+RESULTS:
+
+** Como leer archivos en python
+   Para leer un archivo tenemos que abrirlo en modo lectura
+    #+begin_src python :results output :exports both
+      f = open("test.txt", "r")
+    #+end_src
+
+   Una vez abierto el archivo, podemos usar el método =read=.
+    #+begin_src python :results output :exports both
+      contenido = f.read()
+    #+end_src
+
+    Ejemplo completo
+    
+    #+begin_src python :results output :exports both
+      archivo = open("test.txt", "r")
+      contenido = archivo.read()
+      print(contenido)
+      archivo.close()
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    Nueva linea 0
+    Nueva linea 1
+    Nueva linea 2
+    Nueva linea 3
+    Nueva linea 4
+    Nueva linea 5
+    Nueva linea 6
+    Nueva linea 7
+    Nueva linea 8
+    Nueva linea 9
+    Linea agregada 100
+    Linea agregada 101
+    Linea agregada 102
+    Linea agregada 103
+    Linea agregada 104
+    Linea agregada 105
+    Linea agregada 106
+    Linea agregada 107
+    Linea agregada 108
+    Linea agregada 109
+    Linea agregada 100
+    Linea agregada 101
+    Linea agregada 102
+    Linea agregada 103
+    Linea agregada 104
+    Linea agregada 105
+    Linea agregada 106
+    Linea agregada 107
+    Linea agregada 108
+    Linea agregada 109
+    Linea agregada 100
+    Linea agregada 101
+    Linea agregada 102
+    Linea agregada 103
+    Linea agregada 104
+    Linea agregada 105
+    Linea agregada 106
+    Linea agregada 107
+    Linea agregada 108
+    Linea agregada 109
+
+    #+end_example
+
+
+** Leer línea por línea un archivo
+   Podemos usar el método =readlines= para leer linea por linea un archivo
+   
+    #+begin_src python :results output :exports both
+      archivo = open("test2.txt", "w+")
+      for i in range(10):
+          archivo.write(f"Nueva linea {i}\n") 
+      archivo.close()
+    #+end_src
+
+    #+RESULTS:
+
+    Ejemplo
+
+    #+begin_src python :results output :exports both
+      archivo = open("test2.txt", "r")
+      lineas = archivo.readlines()
+      for x in lineas:
+          linea = x[:-1].split(' ')
+          print(f'col1={linea[0]}, col2={linea[1]}, col3={int(linea[2])}, col3*col3={int(linea[2])*int(linea[2])}')
+      archivo.close()
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    col1=Nueva, col2=linea, col3=0, col3*col3=0
+    col1=Nueva, col2=linea, col3=1, col3*col3=1
+    col1=Nueva, col2=linea, col3=2, col3*col3=4
+    col1=Nueva, col2=linea, col3=3, col3*col3=9
+    col1=Nueva, col2=linea, col3=4, col3*col3=16
+    col1=Nueva, col2=linea, col3=5, col3*col3=25
+    col1=Nueva, col2=linea, col3=6, col3*col3=36
+    col1=Nueva, col2=linea, col3=7, col3*col3=49
+    col1=Nueva, col2=linea, col3=8, col3*col3=64
+    col1=Nueva, col2=linea, col3=9, col3*col3=81
+    #+end_example
+
+    #+begin_src python :results output :exports both
+      with open("test2.txt", "r") as archivo:
+        lineas = archivo.readlines()
+        for x in lineas:
+            linea = x[:-1].split(' ')
+            print(f'col1={linea[0]}, col2={linea[1]}, col3={int(linea[2])}, col3*col3={int(linea[2])*int(linea[2])}')
+    #+end_src
+
+    #+RESULTS:
+    #+begin_example
+    col1=Nueva, col2=linea, col3=0, col3*col3=0
+    col1=Nueva, col2=linea, col3=1, col3*col3=1
+    col1=Nueva, col2=linea, col3=2, col3*col3=4
+    col1=Nueva, col2=linea, col3=3, col3*col3=9
+    col1=Nueva, col2=linea, col3=4, col3*col3=16
+    col1=Nueva, col2=linea, col3=5, col3*col3=25
+    col1=Nueva, col2=linea, col3=6, col3*col3=36
+    col1=Nueva, col2=linea, col3=7, col3*col3=49
+    col1=Nueva, col2=linea, col3=8, col3*col3=64
+    col1=Nueva, col2=linea, col3=9, col3*col3=81
+    #+end_example
