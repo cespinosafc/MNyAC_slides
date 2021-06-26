@@ -21,6 +21,128 @@
   #+end_src
   
 ** Ejemplo
+#+begin_src python :results output :exports both
+  def hola():
+      print('Hola Mundo')
+  
+  hola()
+#+end_src
+
+#+RESULTS:
+: Hola Mundo
+
+#+begin_src python :results output :exports both
+  def hola():
+      print('Hola Mundo')
+  
+  hola
+#+end_src
+
+#+RESULTS:
+
+#+begin_src python :results output :exports both
+  def hola(num1):
+      print(f'Hola {num1}')
+  
+  hola('Mundo')
+  hola(1.2)
+#+end_src
+
+#+RESULTS:
+: Hola Mundo
+: Hola 1.2
+
+#+begin_src python :results output :exports both
+  def hola(num1):
+      print('Hola {}'.format(num1))
+  
+  hola('Mundo')
+  hola(1.2)
+#+end_src
+
+#+RESULTS:
+: Hola Mundo
+: Hola 1.2
+
+#+begin_src python :results output :exports both
+  def hola(num1):
+      resultado = f'Hola {num1}'
+      return resultado
+  a = hola('Mundo')
+  print(a)
+#+end_src
+
+#+RESULTS:
+: Hola Mundo
+
+#+begin_src python :results output :exports both
+  def hola(nombre, saludo):
+      resultado = '{} {}'.format(saludo, nombre)
+      return resultado
+  a = hola('Mundo', 'Buenos dias')
+  print(a)
+#+end_src
+
+#+RESULTS:
+: Buenos dias Mundo
+
+#+begin_src python :results output :exports both
+  def hola(nombre, saludo='Hola'):
+      resultado = '{} {}'.format(saludo, nombre)
+      return resultado
+  a = hola('Mundo')
+  print(a)
+#+end_src
+
+#+RESULTS:
+: Hola Mundo
+
+#+begin_src python :results output :exports both
+  def hola(nombre, saludo='Nihao'):
+      resultado = '{} {}'.format(saludo, nombre)
+      return resultado
+  a = hola('Mundo', 'Hola')
+  print(a)
+#+end_src
+
+#+RESULTS:
+: Hola Mundo
+
+#+begin_src python :results output :exports both
+  print('Comienzo')
+  
+  def hola(nombre1, nombre2, saludo='Hola'):
+      resultado = '{} {} y {}'.format(saludo, nombre1, nombre2)
+      return resultado
+  
+  a = hola('Mundo', 'Carlos')
+  print(a)
+  a = hola('Carlos', 'Mundo')
+  print(a)
+  a = hola(nombre2='Carlos', nombre1='Mundo')
+  print(a)
+  a = hola('Mundo', 'Carlos', 'Hi')
+  print(a)
+#+end_src
+
+#+RESULTS:
+: Comienzo
+: Hola Mundo y Carlos
+: Hola Carlos y Mundo
+: Hola Mundo y Carlos
+: Hi Mundo y Carlos
+
+#+begin_src python :results output :exports both
+  print('Comienzo')
+  
+  def hola(nombre1, nombre2, saludo='Hola'):
+      mensaje1 = '{} {}'.format(saludo, nombre1)
+      mensaje2 = '{} {}'.format(saludo, nombre2)
+      return re
+  
+  a = hola('Mundo', 'Carlos')
+  print(a)
+#+end_src
   #+begin_src python :results output :exports both
     def suma(num1, num2):
         resultado = num1 + num2
